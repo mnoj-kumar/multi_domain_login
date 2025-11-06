@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Multi domain login install file.
+ */
+
+/**
+ * Implements hook_update_N().
+ */
+function multi_domain_login_update_9000(&$sandbox) {
+  $config = Drupal::configFactory()->getEditable('multi_domain_login.settings');
+  $config->clear('message');
+  $config->save();
+}

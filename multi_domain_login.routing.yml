@@ -1,0 +1,27 @@
+multi_domain_login.domain:
+  path: '/user/login/domain'
+  defaults:
+    _controller: '\Drupal\multi_domain_login\Controller\MultiDomainLoginController::domain'
+    _title: 'Log in'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+  options:
+    _maintenance_access: 'TRUE'
+
+multi_domain_login.login:
+  path: '/user/login/domain/{referrer}/{uid}/{timestamp}/{hash}/{langcode}'
+  defaults:
+    _controller: '\Drupal\multi_domain_login\Controller\MultiDomainLoginController::login'
+    _title: 'Log in'
+  requirements:
+    _permission: 'access content'
+  options:
+    _maintenance_access: 'TRUE'
+
+multi_domain_login.admin_settings:
+  path: '/admin/config/multi_domain_login'
+  defaults:
+    _form: '\Drupal\multi_domain_login\Form\MultiDomainLoginForm'
+    _title: 'Multi domain login settings'
+  requirements:
+    _permission: 'administer site configuration'

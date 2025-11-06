@@ -1,0 +1,21 @@
+# Schema for the configuration files of the multi_domain_login module.
+
+multi_domain_login.settings:
+  type: config_object
+  label: 'Multi domain login settings'
+  mapping:
+    timeout:
+      type: integer
+      label: 'Timeout'
+    domains:
+      type: sequence
+      label: 'Domains'
+    redirect_success:
+      type: string
+      label: 'Redirect on success'
+    redirect_error:
+      type: string
+      label: 'Redirect on error'
+    force_logout:
+      type: boolean
+      label: 'Force logout'

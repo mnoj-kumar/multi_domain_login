@@ -1,0 +1,18 @@
+name: 'Multi domain login'
+description: 'Allows users to login on multiple domains at once.'
+package: 'Other'
+type: module
+core_version_requirement: ^8.8 || ^9 || ^10 || ^11
+dependencies:
+  - drupal:system
+  - drupal:user
+
+# Information added by Drupal.org packaging script on 2024-01-26
+# version: '1.0.7'
+# project: 'multi_domain_login'
+# datestamp: 1706263377
+
+# Information added by Drupal.org packaging script on 2025-01-20
+version: '1.0.10'
+project: 'multi_domain_login'
+datestamp: 1737381305

@@ -1,0 +1,9 @@
+services:
+  logger.channel.multi_domain_login:
+    parent: logger.channel_base
+    arguments: ['multi_domain_login']
+  multi_domain_login.event_user_login_subscriber:
+    class: '\Drupal\multi_domain_login\EventSubscriber\UserLoginSubscriber'
+    arguments: ['@language_manager', '@current_route_match', '@request_stack']
+    tags:
+      - { name: 'event_subscriber' }

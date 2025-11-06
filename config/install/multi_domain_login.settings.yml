@@ -1,0 +1,6 @@
+langcode: en
+timeout: 30
+domains: {  }
+redirect_success: ''
+redirect_error: ''
+force_logout: 1

@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * @file
+ * Multi domain login module file.
+ */
+
+use Drupal\multi_domain_login\Event\UserLoginEvent;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+ /**
+ * Implements hook_help().
+ */
+function multi_domain_login_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.multi_domain_login':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('This module allows you to login on one domain and will automatically log you in on all the other domains (a bit like a simple SSO).') . '</p>';
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_user_login().
+ */
+function multi_domain_login_user_login($account) {
+  $event = new UserLoginEvent($account);
+  $event_dispatcher = \Drupal::service('event_dispatcher');
+  $event_dispatcher->dispatch($event, UserLoginEvent::EVENT_NAME);
+}
+
+/**
+ * Implements hook_user_logout().
+ */
+function multi_domain_login_user_logout($account) {
+  $current_route = \Drupal::routeMatch()->getRouteName();
+
+  if (!in_array($current_route, ['multi_domain_login.login'])) {
+    /** @var \Drupal\Core\Session\SessionManagerInterface $sessionManager */
+    $sessionManager = \Drupal::service('session_manager');
+    $sessionManager->delete($account->id());
+  }
+}
