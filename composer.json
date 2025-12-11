@@ -1,7 +1,7 @@
 {
-  "name": "drupal/multi_domain_login",
+  "name": "manoj/multi_domain_login",
   "type": "drupal-module",
-  "description": "Custom module for multi-domain login.",
+  "description": "Custom (Module for multi-domain login.)",
   "license": "GPL-2.0+",
   "require": {}
 }
